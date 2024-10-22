@@ -2,7 +2,7 @@
 
 using Documenter
 
-makedocs(;
+makedocs(
     modules = Module[],
     format = Documenter.HTML(),
     clean = true,
@@ -19,8 +19,9 @@ makedocs(;
     authors = "The Julia Project",
 )
 
-deploydocs(;
-    repo="github.com/tecosaur/julia-dev-guide.jl",
+deploydocs(
+    repo = "JuliaLang/devguide.julialang.org",
+    cname = "devguide.julialang.org",
     devbranch = "main",
     versions = nothing
 )

@@ -1,4 +1,4 @@
-name: CI
+name: Build site
 permissions:
   contents: write
 on:
@@ -9,11 +9,11 @@ on:
   pull_request:
 jobs:
   docs:
-    name: Documentation
+    name: Documenter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v1
+      - uses: julia-actions/setup-julia@v2
         with:
           version: '1'
       - run: julia --project=. -e 'using Pkg; Pkg.instantiate();'
