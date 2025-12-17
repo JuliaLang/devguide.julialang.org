@@ -1,22 +1,25 @@
 name: Build site
+
 permissions:
   contents: write
+
 on:
   push:
     branches:
       - main
-    tags: '*'
+    tags: ['*']
   pull_request:
+
 jobs:
   docs:
     name: Documenter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1'
-      - run: julia --project=. -e 'using Pkg; Pkg.instantiate();'
-      - run: julia --project=. make.jl
+      - run: julia --project=. --color=yes -e 'using Pkg; Pkg.instantiate();'
+      - run: julia --project=. --color=yes make.jl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
